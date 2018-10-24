@@ -44,7 +44,7 @@ if __name__ == "__main__":
     s=''
     length=int(input(">"))
     typelen=len(Type)
-    for i in range(3,typelen):
+    for i in range(2):
         s=make_str(length,s,Type[i])
         # if Type[i]=="emoji":
         #     emoji=s.split()
