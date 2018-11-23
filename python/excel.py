@@ -52,6 +52,16 @@ def sumCol(table,colName):
         sumNum=sumNum+float(i)
     return sumNum
 
+#按条件筛选行
+def filter_by_name(records,**rule):
+    newlist=[]
+    index=readTitle(table).index(rule['title'])
+    if rule['condition']=='include':
+        for record in records:
+            if record[index] in rule['value']:
+                newlist.append(record)
+        return newlist
+
 if __name__ == '__main__':
     ifn = r"in.txt"
     ofn = r"out.txt"
