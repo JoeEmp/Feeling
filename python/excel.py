@@ -5,7 +5,8 @@ import re
 methods={"equal":1,"unequal":2,"contain":3,"exclusive":4}
 rank={"row":1,"col":2}
 
-#返回字典 index=0 格式为[{'title':[]}] index！=0 返回某一个表
+#返回列表嵌套字典  index=0 格式为[{'title':[]}]
+#返回字典         index！=0 返回某一个表 {'title':[]}
 def readExcel(filename,index=0):
     try:
         f=open(filename,'rb')
@@ -22,11 +23,34 @@ def readExcel(filename,index=0):
         return tableList[index-1]
     return tableList
 
+#读取单行数据 返回列表 []
 def readRecord(table,index=0):
     record=[]
     for key in table:
         record.append(table[key][index])
     return record
+
+#读取全部数据 返回嵌套列表 [[],[],...]
+def readRecords(table):
+    length=len(table[readTitle(table)[0]])
+    records=[]
+    for index in range(length):
+        records.append(readRecord(table,index))
+    return records
+
+#读取标题信息 返回列表 []
+def readTitle(table):
+    titleList=[]
+    for key in table:
+        titleList.append(key)
+    return titleList
+
+#计算某列总数
+def sumCol(table,colName):
+    sumNum=0
+    for i in table[colName]:
+        sumNum=sumNum+float(i)
+    return sumNum
 
 if __name__ == '__main__':
     ifn = r"in.txt"
@@ -39,5 +63,3 @@ if __name__ == '__main__':
     for i in list:
         outfile.write(i+'\n')
     outfile.close()
-
-
