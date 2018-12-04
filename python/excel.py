@@ -3,14 +3,14 @@ import xlrd
 import re
 
 methods={"equal":1,"unequal":2,"contain":3,"exclusive":4}
-rank={"row":1,"col":2}
+ranks={"row":1,"col":2}
 
 #返回列表嵌套字典  index=0 格式为[{'title':[]}]
 #返回字典         index！=0 返回某一个表 {'title':[]}
 def readExcel(filename,index=0):
     try:
-        f=open(filename,'rb')
-        book=xlrd.open_workbook(f)
+        #f=open(filename,'rb')
+        book=xlrd.open_workbook(filename)
     except Exception as e:
         print(e)
     tableList=[]
@@ -53,9 +53,9 @@ def sumCol(table,colName):
     return sumNum
 
 #按条件筛选行
-def filter_by_name(records,**rule):
+def filter_by_name(records，titlelist、,**rule):
     newlist=[]
-    index=readTitle(table).index(rule['title'])
+    index=titleList.index(rule['title'])
     if rule['condition']=='include':
         for record in records:
             if record[index] in rule['value']:
