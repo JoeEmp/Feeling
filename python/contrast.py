@@ -8,7 +8,7 @@ def readfile(filename='read.txt',path='./'):
 
 def highlight(str1,str2,colorType):
     for i in range(0,len(str)):
-    pass
+   	 pass
 
 def contrast(oText,cText,colorType="\x1b[1;30;46m"):
     oLength=len(oText)
