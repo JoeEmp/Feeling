@@ -51,7 +51,7 @@ def deal_argv(argv):
 
 def to_qr(argv):
     ret = False
-    if 2 >= len(argv):
+    if 2 > len(argv):
         printhelpMsg()
         return ret
     flag = deal_argv(argv[2:])
