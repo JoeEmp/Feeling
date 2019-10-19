@@ -48,7 +48,6 @@ def printhelpMsg():
     print("save pricuter without filename:python url_to_qr.py https://google.com -s")
 
 def to_qr():
-    print(valueDict)
     if 'build' == valueDict['options']:
         qr=qrcode.QRCode(version=1,
         				 error_correction=qrcode.constants.ERROR_CORRECT_L,
@@ -91,7 +90,7 @@ def deal_argv(*args,**kwargs):
             except KeyError:
                 pass
             except Exception as e:
-                print(e)
+                logging.warning(e)
                 valueDict['options'] = 'help'
     else:
         valueDict['options'] = 'help'
