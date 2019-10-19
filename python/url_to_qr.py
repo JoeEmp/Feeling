@@ -34,8 +34,9 @@ def Modified_suffix(filename):
         if filename.split('.')[-1] not in ['png','jpg','gif','svg','jepg']:
             filename = filename+'.png'
     except AttributeError:
-        print('filename错误')
-    return str(filename)
+        logging.warning('filename错误,使用时间命名')
+        return valueDict['name']
+    return filename
 
 def printhelpMsg():
     '''
